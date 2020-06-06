@@ -1,0 +1,3 @@
+New-Item -Path out -ItemType directory -ErrorAction SilentlyContinue
+docker run -v ${PWD}:/work -it --rm nginx openssl req -newkey rsa:2048 -nodes -config /work/hostreq.conf -keyout /work/out/hostkey.pem -out /work/out/hostreq.pem
+docker run -v ${PWD}:/work -it --rm nginx openssl x509 -req -in /work/out/hostreq.pem -CA /work/out/rootcert.pem -CAkey /work/out/rootkey.pem -CAcreateserial -days 30 -extensions v3_req -extfile /work/hostreq.conf -out /work/out/hostcert.pem
