@@ -1,2 +1,2 @@
 New-Item -Path out -ItemType directory -ErrorAction SilentlyContinue
-docker run -v ${PWD}:/work -it --rm nginx openssl req -x509 -days 365 -newkey rsa:2048 -nodes -subj "/C=US/CN=dogbertai.net Root CA" -keyout /work/out/rootkey.pem -out /work/out/rootcert.pem
+docker run -v "${PWD}:/work" -it --rm nginx openssl req -x509 -days 365 -newkey rsa:2048 -nodes -subj "/C=US/CN=dogbertai.net Root CA" -keyout /work/out/rootkey.pem -out /work/out/rootcert.pem
